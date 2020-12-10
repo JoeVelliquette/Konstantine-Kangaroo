@@ -2,28 +2,28 @@ import './App.less';
 
 import React from 'react';
 import { Layout } from 'antd';
-import YouTube from 'react-youtube';
-import {playerOpt, SNOWFLAKE_COUNT} from "./util/Constants";
-import Snowfall from 'react-snowfall';
+import Routes from "./modules/Routes";
+import AppHeader from "./components/AppHeader";
+import {BrowserRouter as Router} from "react-router-dom";
+import AppFooter from "./components/AppFooter";
 
 const { Header, Footer, Content } = Layout;
 
 function App() {
     return (
-        <Layout>
-            <Header className='header'>
-
-            </Header>
-            <Content className='content'>
-                <Snowfall
-                    style={{backgroundColor: '#001529'}}
-                    snowflakeCount={SNOWFLAKE_COUNT}
-                />
-            </Content>
-            <Footer className='footer'>
-                <YouTube videoId="Z0ajuTaHBtM" opts={playerOpt} />
-            </Footer>
-        </Layout>
+        <Router className='routes'>
+            <Layout>
+                <Header className='header'>
+                    <AppHeader/>
+                </Header>
+                <Content className='content'>
+                    <Routes/>
+                </Content>
+                <Footer className='footer'>
+                    <AppFooter/>
+                </Footer>
+            </Layout>
+        </Router>
     );
 }
 
